@@ -1,0 +1,27 @@
+version: '3'
+services:
+  backend:
+    image: anshsaxena05/course-api
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/courses_db
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: Bravo@5103#
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+
+  frontend:
+    image: anshsaxena05/course-frontend
+    ports:
+      - "3000:3000"
+
+  db:
+    image: postgres:latest
+    environment:
+      POSTGRES_DB: courses_db
+      POSTGRES_USER: Bravo@5103#
+      POSTGRES_PASSWORD: your_password
+    ports:
+      - "5432:5432"
